@@ -8,7 +8,8 @@
     "test:e2e": "playwright test",
     "test": "npm run test:unit && npm run test:e2e",
     "pretest:e2e": "playwright install chromium",
-    "record:gifs": "node tools/record-gifs.js"
+    "record:gifs": "node tools/record-gifs.js",
+    "record:redirect": "node tools/record-redirect-live.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.48.0",

@@ -1,4 +1,4 @@
-# Inner Peace — details & contributor guide
+# Inner Peace: details & contributor guide
 
 A gentle Manifest V3 browser extension that redirects distracting sites to a calm
 breathing page. This file holds everything that doesn't belong on the landing
@@ -13,7 +13,7 @@ built dynamically from your block list (`background.js`).
 
 ## Install from source (load unpacked)
 
-No build step — the extension is plain HTML/CSS/JS.
+No build step. The extension is plain HTML/CSS/JS.
 
 1. Clone the repo:
    ```
@@ -28,7 +28,7 @@ To update later: `git pull`, then click **Reload** (⟳) on the extension's card
 
 ## Using it
 
-**Reaching your settings — any of these three, so you're never locked out:**
+**Reaching your settings, any of these three, so you're never locked out:**
 
 - Click the **toolbar icon**.
 - `chrome://extensions` → the extension's **Details** → **Extension options**.
@@ -36,9 +36,9 @@ To update later: `git pull`, then click **Reload** (⟳) on the extension's card
 
 **On the calm page**, click **⚙** (top-left) to open the panel:
 
-- **Soundscape** — pick a sound; it switches instantly. Only one plays at a time.
-- **Volume** — drag the slider (a cubic curve keeps the quiet end gentle).
-- **Blocked sites** — type a domain (e.g. `reddit.com`) and **Add**, or **✕** to
+- **Soundscape**: pick a sound; it switches instantly. Only one plays at a time.
+- **Volume**: drag the slider (a cubic curve keeps the quiet end gentle).
+- **Blocked sites**: type a domain (e.g. `reddit.com`) and **Add**, or **✕** to
   remove. Changes apply immediately.
 
 The **🔈 / 🔊** button toggles sound. Browsers block audible autoplay until you
@@ -55,14 +55,15 @@ it only for sites you want hard-locked.
 
 ## Development
 
-Tests are plain JavaScript — no TypeScript, no framework lock-in.
+Tests are plain JavaScript, no TypeScript, no framework lock-in.
 
 ```
 npm install            # installs Playwright (the only dev dependency)
 npm run test:unit      # Node's built-in test runner (pure functions)
 npm run test:e2e       # Playwright: loads the extension in Chromium
 npm test               # both
-npm run record:gifs    # re-record the README GIFs into assets/
+npm run record:gifs    # re-record the hero + block-list GIFs
+npm run record:redirect # re-record the live address-bar redirect GIF
 ```
 
 - **Unit tests** (`test/unit/`) cover `sites.js` (normalize/validate),
@@ -97,7 +98,7 @@ test/             unit + e2e tests
 
 ## Licensing
 
-- **Code:** MIT — see [LICENSE](LICENSE).
+- **Code:** MIT, see [LICENSE](LICENSE).
 - **Audio:** third-party works under their own licenses (CC0 / public domain /
   CC BY-SA 3.0). See [CREDITS.txt](CREDITS.txt). Note `sounds/waterfall.ogg` is
   CC BY-SA 3.0 (attribution + share-alike); for a fully attribution-free build,
