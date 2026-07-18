@@ -1,0 +1,32 @@
+Bundled audio credits
+=====================
+All files verified as genuine ambience (no speech) with tools/verify_audio.py,
+and loudness-normalized to ~-20 LUFS for consistent volume.
+
+sounds/waterfall.ogg  — real waterfall
+  Source : "Water fall.ogg"
+  Author : Benzband
+  License: CC BY-SA 3.0  (attribution + share-alike REQUIRED)
+  https://creativecommons.org/licenses/by-sa/3.0/
+  https://commons.wikimedia.org/wiki/File:Water_fall.ogg
+
+sounds/fountain.ogg  — pouring / trickling water
+  Source : "Water flowing pouring trickling.ogg"
+  License: Public domain (no attribution required)
+  https://commons.wikimedia.org/wiki/File:Water_flowing_pouring_trickling.ogg
+
+sounds/stream.ogg  — stream / brook
+  Source : "363120 fractalstudios water-trickle.wav" (Freesound mirror)
+  License: CC0 1.0 public-domain dedication (no attribution required)
+  https://commons.wikimedia.org/wiki/File:363120_fractalstudios_water-trickle.wav
+
+sounds/forest.ogg  — gentle breeze + birdsong
+  Source : "Gentle breeze and birds singing.ogg"
+  License: Public domain (no attribution required)
+  https://commons.wikimedia.org/wiki/File:Gentle_breeze_and_birds_singing.ogg
+
+Rain, Ocean and Wind are synthesized in real time (audio.js) — no file, no license.
+
+NOTE: waterfall.ogg is CC BY-SA 3.0 (attribution + share-alike). For a fully
+no-attribution build, replace it with a CC0/public-domain waterfall or the
+synthesized fallback before publishing.
