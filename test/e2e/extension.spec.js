@@ -112,6 +112,32 @@ test("calm-page add flow blocks a new site", async () => {
   await calm.close();
 });
 
+test("calm-page theme picker switches and persists the background", async () => {
+  const calm = await context.newPage();
+  await calm.goto("chrome-extension://" + extId + "/calm.html", { waitUntil: "domcontentloaded" });
+
+  // defaults to the calm theme
+  await expect(calm.locator("html")).toHaveAttribute("data-theme", "calm");
+
+  await calm.locator("#gearBtn").click();
+  await calm.locator('#themes button[data-theme="sunny"]').click();
+  await expect(calm.locator("html")).toHaveAttribute("data-theme", "sunny");
+  await expect(calm.locator('#themes button[data-theme="sunny"]')).toHaveClass(/active/);
+
+  const stored = await sw.evaluate(() =>
+    new Promise((r) => chrome.storage.local.get({ theme: "calm" }, (x) => r(x.theme)))
+  );
+  expect(stored).toBe("sunny");
+
+  // a freshly opened calm page restores the saved theme
+  const calm2 = await context.newPage();
+  await calm2.goto("chrome-extension://" + extId + "/calm.html", { waitUntil: "domcontentloaded" });
+  await expect(calm2.locator("html")).toHaveAttribute("data-theme", "sunny");
+
+  await calm2.close();
+  await calm.close();
+});
+
 test("calm-page remove flow stops blocking", async () => {
   await setBlockedSites([TEST_HOST]);
   await expect.poll(getDynamicRuleFilters).toContain("||" + TEST_HOST);

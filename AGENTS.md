@@ -36,6 +36,7 @@ To update later: `git pull`, then click **Reload** (⟳) on the extension's card
 
 **On the calm page**, click **⚙** (top-left) to open the panel:
 
+- **Background**: choose a theme (Calm, Sunny, Dusk); it switches instantly.
 - **Soundscape**: pick a sound; it switches instantly. Only one plays at a time.
 - **Volume**: drag the slider (a cubic curve keeps the quiet end gentle).
 - **Blocked sites**: type a domain (e.g. `reddit.com`) and **Add**, or **✕** to

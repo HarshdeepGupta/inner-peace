@@ -1,11 +1,13 @@
 /* Calm page behaviour: one static message, clock, breath label, inline sound panel.
    A single audio instance is used throughout, so only one sound ever plays. */
 (function () {
-  var DEFAULTS = { enabled: true, sound: "waterfall", volume: 40 };
+  var DEFAULTS = { enabled: true, sound: "waterfall", volume: 40, theme: "calm" };
   var LABELS = {
     waterfall: "Waterfall", fountain: "Fountain", stream: "Stream", forest: "Forest",
     rain: "Rain", ocean: "Ocean", wind: "Wind"
   };
+  var THEMES = ["calm", "sunny", "dusk"];
+  var THEME_LABELS = { calm: "Calm", sunny: "Sunny", dusk: "Dusk" };
 
   var settings = Object.assign({}, DEFAULTS);
   var muted = false;
@@ -46,6 +48,7 @@
   var gearBtn = document.getElementById("gearBtn");
   var panel = document.getElementById("panel");
   var soundsEl = document.getElementById("sounds");
+  var themesEl = document.getElementById("themes");
   var volEl = document.getElementById("volume");
   var volVal = document.getElementById("volVal");
   var hint = document.getElementById("soundHint");
@@ -101,6 +104,31 @@
     var chips = soundsEl.querySelectorAll(".sound-chip");
     for (var i = 0; i < chips.length; i++)
       chips[i].classList.toggle("active", chips[i].dataset.sound === settings.sound);
+  }
+
+  /* build theme chips */
+  THEMES.forEach(function (name) {
+    var chip = document.createElement("button");
+    chip.className = "sound-chip";
+    chip.dataset.theme = name;
+    chip.textContent = THEME_LABELS[name] || name;
+    chip.addEventListener("click", function () {
+      settings.theme = name;
+      applyTheme(name);
+      markThemeActive();
+      save();
+    });
+    themesEl.appendChild(chip);
+  });
+
+  function applyTheme(name) {
+    document.documentElement.setAttribute("data-theme", name);
+  }
+
+  function markThemeActive() {
+    var chips = themesEl.querySelectorAll(".sound-chip");
+    for (var i = 0; i < chips.length; i++)
+      chips[i].classList.toggle("active", chips[i].dataset.theme === settings.theme);
   }
 
   gearBtn.addEventListener("click", function () { panel.classList.toggle("open"); });
@@ -199,6 +227,9 @@
   /* ---------- init from saved settings ---------- */
   function init(s) {
     settings = Object.assign({}, DEFAULTS, s);
+    if (THEMES.indexOf(settings.theme) === -1) settings.theme = DEFAULTS.theme;
+    applyTheme(settings.theme);
+    markThemeActive();
     volEl.value = settings.volume;
     volVal.textContent = settings.volume + "%";
     markActive();

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Inner Peace",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Redirects distracting sites to a calm breathing space with gentle nature sounds. Configurable block list.",
   "permissions": ["declarativeNetRequest", "storage"],
   "host_permissions": ["*://*/*"],
