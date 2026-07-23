@@ -120,9 +120,9 @@ test("calm-page theme picker switches and persists the background", async () => 
   await expect(calm.locator("html")).toHaveAttribute("data-theme", "calm");
 
   await calm.locator("#gearBtn").click();
-  await calm.locator('#themes button[data-theme="sunny"]').click();
+  await calm.locator('#themes button[data-theme-name="sunny"]').click();
   await expect(calm.locator("html")).toHaveAttribute("data-theme", "sunny");
-  await expect(calm.locator('#themes button[data-theme="sunny"]')).toHaveClass(/active/);
+  await expect(calm.locator('#themes button[data-theme-name="sunny"]')).toHaveClass(/active/);
 
   const stored = await sw.evaluate(() =>
     new Promise((r) => chrome.storage.local.get({ theme: "calm" }, (x) => r(x.theme)))

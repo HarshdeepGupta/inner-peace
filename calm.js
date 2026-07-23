@@ -110,7 +110,7 @@
   THEMES.forEach(function (name) {
     var chip = document.createElement("button");
     chip.className = "sound-chip";
-    chip.dataset.theme = name;
+    chip.dataset.themeName = name;
     chip.textContent = THEME_LABELS[name] || name;
     chip.addEventListener("click", function () {
       settings.theme = name;
@@ -128,7 +128,7 @@
   function markThemeActive() {
     var chips = themesEl.querySelectorAll(".sound-chip");
     for (var i = 0; i < chips.length; i++)
-      chips[i].classList.toggle("active", chips[i].dataset.theme === settings.theme);
+      chips[i].classList.toggle("active", chips[i].dataset.themeName === settings.theme);
   }
 
   gearBtn.addEventListener("click", function () { panel.classList.toggle("open"); });

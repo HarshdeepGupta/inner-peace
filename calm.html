@@ -21,6 +21,12 @@
     --breath-halo-0: rgba(90, 178, 176, 0);
     --breath-glow: rgba(140, 224, 205, 0.25);
     --breath-text-rgb: 11, 30, 45;
+    --chip-border: rgba(255, 255, 255, 0.14);
+    --chip-bg: rgba(255, 255, 255, 0.04);
+    --chip-bg-hover: rgba(255, 255, 255, 0.1);
+    --separator: rgba(255, 255, 255, 0.07);
+    --input-border: rgba(255, 255, 255, 0.15);
+    --panel-border: rgba(255, 255, 255, 0.1);
   }
   [data-theme="sunny"] {
     color-scheme: light;
@@ -37,6 +43,12 @@
     --breath-halo-0: rgba(250, 170, 90, 0);
     --breath-glow: rgba(255, 190, 90, 0.45);
     --breath-text-rgb: 90, 50, 20;
+    --chip-border: rgba(90, 60, 30, 0.4);
+    --chip-bg: rgba(90, 60, 30, 0.05);
+    --chip-bg-hover: rgba(90, 60, 30, 0.13);
+    --separator: rgba(90, 60, 30, 0.18);
+    --input-border: rgba(90, 60, 30, 0.4);
+    --panel-border: rgba(90, 60, 30, 0.22);
   }
   [data-theme="dusk"] {
     color-scheme: dark;
@@ -53,6 +65,12 @@
     --breath-halo-0: rgba(180, 120, 220, 0);
     --breath-glow: rgba(217, 167, 255, 0.28);
     --breath-text-rgb: 36, 22, 51;
+    --chip-border: rgba(255, 255, 255, 0.14);
+    --chip-bg: rgba(255, 255, 255, 0.04);
+    --chip-bg-hover: rgba(255, 255, 255, 0.1);
+    --separator: rgba(255, 255, 255, 0.07);
+    --input-border: rgba(255, 255, 255, 0.15);
+    --panel-border: rgba(255, 255, 255, 0.1);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { height: 100%; }
@@ -133,7 +151,7 @@
     position: fixed; top: 4.4rem; left: 1.6rem; z-index: 5;
     width: 250px;
     background: rgba(var(--surface-rgb), 0.82);
-    border: 1px solid rgba(var(--hairline-rgb), 0.1);
+    border: 1px solid var(--panel-border);
     border-radius: 14px; padding: 1rem 1.1rem;
     backdrop-filter: blur(8px);
     display: none;
@@ -146,11 +164,11 @@
   .sounds, .themes { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
   .sound-chip {
     font-size: 0.82rem; padding: 0.35rem 0.7rem; border-radius: 999px;
-    border: 1px solid rgba(var(--hairline-rgb), 0.14);
-    background: rgba(var(--hairline-rgb), 0.04); color: rgba(var(--fg-rgb), 0.8);
+    border: 1px solid var(--chip-border);
+    background: var(--chip-bg); color: rgba(var(--fg-rgb), 0.85);
     cursor: pointer; transition: all 0.15s ease;
   }
-  .sound-chip:hover { background: rgba(var(--hairline-rgb), 0.1); }
+  .sound-chip:hover { background: var(--chip-bg-hover); }
   .sound-chip.active {
     background: rgba(var(--accent-rgb), 0.2);
     border-color: rgba(var(--accent-rgb), 0.55); color: var(--accent-strong);
@@ -163,7 +181,7 @@
   .blk-add { display: flex; gap: 0.4rem; margin-bottom: 0.4rem; }
   .blk-add input {
     flex: 1; min-width: 0; background: rgba(var(--surface-rgb), 0.6); color: rgb(var(--fg-rgb));
-    border: 1px solid rgba(var(--hairline-rgb), 0.15); border-radius: 8px;
+    border: 1px solid var(--input-border); border-radius: 8px;
     padding: 0.4rem 0.5rem; font-size: 0.82rem;
   }
   .blk-add button {
@@ -175,7 +193,7 @@
   .blk-list { list-style: none; max-height: 150px; overflow-y: auto; }
   .blk-list li {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0.34rem 0.1rem; border-bottom: 1px solid rgba(var(--hairline-rgb), 0.07); font-size: 0.82rem;
+    padding: 0.34rem 0.1rem; border-bottom: 1px solid var(--separator); font-size: 0.82rem;
   }
   .blk-list li .site { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .blk-list li button {
